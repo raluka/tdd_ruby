@@ -1,4 +1,5 @@
 def pig_translate(word)
+  q_matching(word)
   vowels = %w(a e i o u y)
   word_arry = word.split('')
   pos = 0
@@ -12,9 +13,14 @@ def pig_translate(word)
       break
     end
   end
-  (pig_array + %w(a y)).join()
+  (pig_array + %w(a y)).join().gsub("qq", "qu")
 end
 
+def q_matching(word)
+  if word.include?("qu")
+    word.gsub!("qu", "qq")
+  end
+end
 
 def translate(string)
   string_array = string.split(' ')
